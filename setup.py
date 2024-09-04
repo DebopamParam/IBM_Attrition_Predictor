@@ -11,13 +11,20 @@ MINUS_E_DOT = "-e ."
 
 def get_requirements(filepath: str) -> List[str]:
     """Reads the requirements file and returns a list of requirements."""
-    with open(filepath, "r", encoding="utf-8") as file:
-        requirements = file.readlines()
-        # Removes the '\n' at the end of each line
-        requirements = [requirement.strip() for requirement in requirements]
-        if MINUS_E_DOT in requirements:
-            requirements.remove(MINUS_E_DOT)
-    return requirements
+    try:
+        with open(filepath, "r", encoding="utf-8") as file:
+            content = file.read()
+            print(f"Content of {filepath}:\n{content}")
+            requirements = content.splitlines()
+            # Removes the '\n' at the end of each line
+            requirements = [requirement.strip() for requirement in requirements]
+            if MINUS_E_DOT in requirements:
+                requirements.remove(MINUS_E_DOT)
+        print(f"Requirements: {requirements}")
+        return requirements
+    except UnicodeDecodeError as e:
+        print(f"Error reading {filepath}: {e}")
+        raise
 
 
 setup(
