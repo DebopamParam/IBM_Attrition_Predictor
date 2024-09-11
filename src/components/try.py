@@ -1,5 +1,6 @@
 from src.components.data_injestion import DataIngestion
 from src.components.data_transformation import DataTransformation
+from src.components.model_trainer import ModelTrainer
 
 
 if __name__ == "__main__":
@@ -12,3 +13,7 @@ if __name__ == "__main__":
             train_data_path, test_data_path
         )
     )
+    print(test_arr[0])
+    model = ModelTrainer()
+    model_report = model.initiate_model_training(train_arr, test_arr)
+    print(model_report)

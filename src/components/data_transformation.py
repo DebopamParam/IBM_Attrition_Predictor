@@ -44,8 +44,8 @@ class DataTransformation:
                     ("onehot", OneHotEncoder(handle_unknown="ignore")),
                 ]
             )
-            print("Ordinal feature mappings : ", ordinal_feature_mappings)
-            print("Ordinal features : ", ordinal_features)
+            # print("Ordinal feature mappings : ", ordinal_feature_mappings)
+            # print("Ordinal features : ", ordinal_features)
 
             ordinal_pipeline = Pipeline(
                 steps=[
