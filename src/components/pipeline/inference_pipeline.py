@@ -47,7 +47,7 @@ class InferencePipeline:
         try:
             data = pd.DataFrame.from_dict(data)
             transformed_data = self.preprocessor.transform(data)
-            prediction = self.model.predict_proba(transformed_data)[1]
+            prediction = self.model.predict_proba(transformed_data)[0,1]
             return prediction * 100
         except Exception as e:
             raise CustomException(e, sys) from e
