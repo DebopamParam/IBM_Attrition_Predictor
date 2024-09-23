@@ -17,6 +17,7 @@ def get_requirements(filepath: str) -> List[str]:
             print(f"Content of {filepath}:\n{content}")
             requirements = content.splitlines()
             # Removes the '\n' at the end of each line
+            
             requirements = [requirement.strip() for requirement in requirements]
             if MINUS_E_DOT in requirements:
                 requirements.remove(MINUS_E_DOT)

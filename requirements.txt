@@ -43,7 +43,6 @@ h5py==3.11.0
 httpcore==1.0.5
 httptools==0.6.1
 httpx==0.27.2
-IBM-Attrition-Prediction @ file:///C:/Users/debop/Desktop/Data%20Science/IBM%20Attrition%20Predictor
 idna==3.8
 ipykernel==6.29.5
 ipython==8.27.0

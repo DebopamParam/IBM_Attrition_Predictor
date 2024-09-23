@@ -1,9 +1,18 @@
 from fastapi import FastAPI, status, HTTPException
 from . import schemas
 from src.components.pipeline.inference_pipeline import InferencePipeline
+from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
 
+# Allowing CORS for all origins for now (you can restrict this to your specific front-end domain later)
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Allows all origins, you can specify your Flutter Web URL here
+    allow_credentials=True,
+    allow_methods=["*"],  # Allows all methods like GET, POST, etc.
+    allow_headers=["*"],  # Allows all headers
+)
 
 @app.get("/")
 def read_root():
