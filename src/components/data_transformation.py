@@ -6,7 +6,7 @@ import pandas as pd
 from sklearn.preprocessing import StandardScaler, OneHotEncoder, OrdinalEncoder
 from sklearn.compose import ColumnTransformer
 from sklearn.pipeline import Pipeline
-from sklearn.impute import SimpleImputer
+from sklearn.impute import SimpleImputer, KNNImputer
 from src.components.fieldsinfo_dataclass import FieldsInfo
 from src.exception import CustomException
 from src.utils import save_object
@@ -34,13 +34,13 @@ class DataTransformation:
 
             numerical_pipeline = Pipeline(
                 steps=[
-                    ("imputer", SimpleImputer(strategy="median")),
+                    ("imputer", KNNImputer(n_neighbors=10, weights="uniform")),
                     ("scaler", StandardScaler()),
                 ]
             )
             categorical_pipeline = Pipeline(
                 steps=[
-                    ("imputer", SimpleImputer(strategy="most_frequent")),
+                    ("imputer", KNNImputer(n_neighbors=10, weights="uniform")),
                     ("onehot", OneHotEncoder(handle_unknown="ignore")),
                 ]
             )
